@@ -1,29 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
-        <TextView
-            android:id="@+id/storyTitleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Story Title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageViewItemStoryCover"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:background="@color/purple_500"
+        android:contentDescription="@string/cover_image_description"
+        tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/storyAuthorTextView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/layoutItemStoryInfo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Story Author" />
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textViewItemStoryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Story Title Very Long To Test Ellipsize Feature" />
+
+            <TextView
+                android:id="@+id/textViewItemStoryAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Story Author" />
+
+            <TextView
+                android:id="@+id/textViewItemStoryGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:layout_marginTop="4dp"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Story Genre" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

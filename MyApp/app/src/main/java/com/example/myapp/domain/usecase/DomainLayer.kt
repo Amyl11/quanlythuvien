@@ -28,6 +28,9 @@ class GetStoryUseCase(private val storyDao: StoryDao) {
     suspend fun getStoryById(storyId: Int): Story? {
         return storyDao.getStoryById(storyId)
     }
+    fun searchStories(query: String): Flow<List<Story>> {
+        return storyDao.searchStories(query)
+    }
 }
 
 class GetChapterUseCase(private val chapterDao: ChapterDao) {
@@ -55,5 +58,12 @@ class UpdateReadingProgressUseCase(private val readingProgressDao: ReadingProgre
     }
     suspend fun getReadingProgress(storyId: Int): ReadingProgress? {
         return readingProgressDao.getReadingProgress(storyId)
+    }
+}
+
+class DeleteStoryUseCase(private val storyDao: StoryDao) {
+
+    suspend operator fun invoke(story: Story) {
+        storyDao.deleteStory(story)
     }
 }

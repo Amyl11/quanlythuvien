@@ -9,8 +9,11 @@ data class Story(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
     val author: String,
+    val genre: String,
     val filePath: String, // Path to the DOC file (or internal storage)
     @ColumnInfo(defaultValue = "0") val lastReadChapter: Int = 0,
     @ColumnInfo(defaultValue = "0") val lastReadPosition: Int = 0,
-    @ColumnInfo(defaultValue = "0") val totalChapters: Int = 0
+    @ColumnInfo(defaultValue = "0") val totalChapters: Int = 0,
+    @ColumnInfo(name = "cover_image_path")
+    val coverImagePath: String? = null
 )

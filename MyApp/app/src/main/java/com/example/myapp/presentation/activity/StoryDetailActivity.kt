@@ -13,6 +13,7 @@ import com.example.myapp.data.dao.ChapterDao
 import com.example.myapp.data.dao.ReadingProgressDao
 import com.example.myapp.data.dao.StoryDao
 import com.example.myapp.databinding.ActivityStoryDetailBinding
+import com.example.myapp.domain.usecase.DeleteStoryUseCase
 import com.example.myapp.domain.usecase.GetChapterUseCase
 import com.example.myapp.domain.usecase.GetStoryUseCase
 import com.example.myapp.domain.usecase.ImportStoryUseCase
@@ -49,7 +50,8 @@ class StoryDetailActivity : AppCompatActivity() {
             ImportStoryUseCase(storyDao, chapterDao),
             GetStoryUseCase(storyDao),
             GetChapterUseCase(chapterDao),
-            UpdateReadingProgressUseCase(readingProgressDao, storyDao)
+            UpdateReadingProgressUseCase(readingProgressDao, storyDao),
+            DeleteStoryUseCase(storyDao)
         )
 
         storyId = intent.getIntExtra("storyId", 0)

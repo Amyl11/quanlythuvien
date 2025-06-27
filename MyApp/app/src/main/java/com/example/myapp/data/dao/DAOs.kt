@@ -1,6 +1,7 @@
 package com.example.myapp.data.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -21,8 +22,18 @@ interface StoryDao {
     @Query("SELECT * FROM stories WHERE id = :storyId")
     suspend fun getStoryById(storyId: Int): Story?
 
+    @Query("SELECT * FROM stories WHERE " +
+            "title LIKE '%' || :query || '%' OR " +
+            "author LIKE '%' || :query || '%' OR " +
+            "genre LIKE '%' || :query || '%' " +
+            "ORDER BY title ASC")
+    fun searchStories(query: String): Flow<List<Story>>
+
     @Update
     suspend fun updateStory(story: Story)
+
+    @Delete
+    suspend fun deleteStory(story: Story)
 }
 
 @Dao
